@@ -1,0 +1,13 @@
+diff --git a/build/android/gyp/jinja_template.py b/build/android/gyp/jinja_template.py
+index 2172f8ff6ecf9..8e96cc75dfaad 100755
+--- a/build/android/gyp/jinja_template.py
++++ b/build/android/gyp/jinja_template.py
+@@ -111,7 +111,7 @@ def main():
+   parser.add_argument('--inputs', required=True,
+                       help='GN-list of template files to process.')
+   parser.add_argument('--includes', default='',
+-                      help="GN-list of files that get {% include %}'ed.")
++                      help="GN-list of files that get {%% include %%}'ed.")
+   parser.add_argument('--output', help='The output file to generate. Valid '
+                       'only if there is a single input.')
+   parser.add_argument('--outputs-zip', help='A zip file for the processed '

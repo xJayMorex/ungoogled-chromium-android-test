@@ -27,6 +27,7 @@ src-fix/fix-android-extensions-core-guards.patch
 src-fix/fix-safebrowsing-android-link-stubs.patch
 src-fix/fix-safebrowsing-android-password-reuse.patch
 src-fix/fix-held-gms-dangling-deps.patch
+src-fix/fix-argparse-badly-formed-help-string.patch
 Vanadium/0003-switch-to-fstack-protector-strong.patch
 Vanadium/0016-disable-seed-based-field-trials.patch
 Vanadium/0017-disable-fetching-variations.patch
