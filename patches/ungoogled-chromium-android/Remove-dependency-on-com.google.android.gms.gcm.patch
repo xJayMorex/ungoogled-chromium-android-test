@@ -13,7 +13,7 @@ The snippets are already disabled in native codes, this will disable it on Java 
 
 --- a/chrome/android/BUILD.gn
 +++ b/chrome/android/BUILD.gn
-@@ -325,7 +325,6 @@ if (_is_default_toolchain) {
+@@ -315,7 +315,6 @@ if (_is_default_toolchain) {
        "$google_play_services_package:google_play_services_basement_java",
        "$google_play_services_package:google_play_services_cast_framework_java",
        "$google_play_services_package:google_play_services_cast_java",
@@ -21,7 +21,7 @@ The snippets are already disabled in native codes, this will disable it on Java 
        "$google_play_services_package:google_play_services_iid_java",
        "$google_play_services_package:google_play_services_tasks_java",
        "$google_play_services_package:google_play_services_vision_common_java",
-@@ -2015,7 +2014,6 @@ if (_is_default_toolchain) {
+@@ -2009,7 +2008,6 @@ if (_is_default_toolchain) {
      ]
      deps = [
        ":chrome_java",
@@ -31,7 +31,7 @@ The snippets are already disabled in native codes, this will disable it on Java 
        "//build/android:build_java",
 --- a/chrome/android/javatests/BUILD.gn
 +++ b/chrome/android/javatests/BUILD.gn
-@@ -54,7 +54,6 @@ android_library("chrome_test_java_helper") {
+@@ -55,7 +55,6 @@ android_library("chrome_test_java_helper") {
      "$google_play_services_package:google_play_services_basement_java",
      "$google_play_services_package:google_play_services_cast_framework_java",
      "$google_play_services_package:google_play_services_cast_java",
@@ -51,7 +51,7 @@ The snippets are already disabled in native codes, this will disable it on Java 
        "//base:base_java_test_support",
 --- a/third_party/android_deps/autorolled/BUILD.gn
 +++ b/third_party/android_deps/autorolled/BUILD.gn
-@@ -251,25 +251,6 @@ template("define_autorolled_targets") {
+@@ -250,25 +250,6 @@ template("define_autorolled_targets") {
        }
      }
  

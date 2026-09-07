@@ -1,3 +1,6 @@
+# 152.0.7977.82-1
+* Upstream update
+
 # 150.0.7871.114-1
 * Upstream update (v99.0.4844.51-1 to v150.0.7871.114)
 * Refreshed patches from bromite, cromite (bromite successor), & vanadium; doing my best to mirror the previous maintainers philosophy and patch structure

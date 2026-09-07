@@ -29,7 +29,7 @@ author: bearinmindcat <bearincrypto@gmail.com>
      // mode, so we can skip.
 --- a/chrome/browser/profiles/profile_avatar_downloader.cc
 +++ b/chrome/browser/profiles/profile_avatar_downloader.cc
-@@ -20,7 +20,7 @@
+@@ -19,7 +19,7 @@
  #include "ui/gfx/image/image.h"
  
  namespace {
@@ -52,7 +52,7 @@ author: bearinmindcat <bearincrypto@gmail.com>
  #include "chrome/browser/browser_process.h"
 --- a/chrome/browser/search/search.cc
 +++ b/chrome/browser/search/search.cc
-@@ -97,7 +97,7 @@
+@@ -96,7 +96,7 @@
    NEW_TAB_URL_MAX
  };
  
@@ -61,7 +61,7 @@ author: bearinmindcat <bearincrypto@gmail.com>
    if (profile) {
      TemplateURLService* template_url_service =
          TemplateURLServiceFactory::GetForProfile(profile);
-@@ -144,7 +144,7 @@
+@@ -143,7 +143,7 @@
                                      IsMatchingServiceWorker(url, new_tab_url));
  }
  
@@ -83,7 +83,7 @@ author: bearinmindcat <bearincrypto@gmail.com>
    }
 --- a/chrome/browser/ui/safety_hub/revoked_permissions_service.cc
 +++ b/chrome/browser/ui/safety_hub/revoked_permissions_service.cc
-@@ -165,7 +165,7 @@
+@@ -167,7 +167,7 @@
            base::Unretained(this)));
  #endif  // BUILDFLAG(IS_ANDROID)
  
@@ -130,46 +130,14 @@ author: bearinmindcat <bearincrypto@gmail.com>
                                               CrowdsourcingRequestType type) {
    // Don't do anything for payloads not related to Query.
    if (type != CrowdsourcingRequestType::kRequestQuery) {
---- a/components/browsing_data/content/browsing_data_model.cc
-+++ b/components/browsing_data/content/browsing_data_model.cc
-@@ -471,7 +471,7 @@
-   std::move(loaded_callback).Run();
- }
- 
--void OnInterestGroupsLoaded(
-+[[maybe_unused]] void OnInterestGroupsLoaded(
-     BrowsingDataModel* model,
-     base::OnceClosure loaded_callback,
-     std::vector<content::InterestGroupManager::InterestGroupDataKey>
-@@ -484,7 +484,7 @@
-   std::move(loaded_callback).Run();
- }
- 
--void OnAttributionReportingLoaded(
-+[[maybe_unused]] void OnAttributionReportingLoaded(
-     BrowsingDataModel* model,
-     base::OnceClosure loaded_callback,
-     std::set<content::AttributionDataModel::DataKey> attribution_reporting) {
-@@ -496,7 +496,7 @@
-   std::move(loaded_callback).Run();
- }
- 
--void OnPrivateAggregationLoaded(
-+[[maybe_unused]] void OnPrivateAggregationLoaded(
-     BrowsingDataModel* model,
-     base::OnceClosure loaded_callback,
-     std::set<content::PrivateAggregationDataModel::DataKey>
 --- a/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
 +++ b/components/safe_browsing/core/browser/realtime/url_lookup_service.cc
-@@ -38,9 +38,9 @@
+@@ -36,7 +36,7 @@
  constexpr int kDefaultRealTimeUrlLookupReferrerLength = 2;
  
  // Probability for sending protego requests for urls on the allowlist
 -const float kProbabilityForSendingSampledRequests = 0.01;
 +[[maybe_unused]] const float kProbabilityForSendingSampledRequests = 0.01;
- 
--constexpr char kCookieHistogramPrefix[] = "SafeBrowsing.RT.Request.HadCookie";
-+[[maybe_unused]] constexpr char kCookieHistogramPrefix[] = "SafeBrowsing.RT.Request.HadCookie";
  
  GURL* GetRealTimeLookupUrlTestOverride() {
    static base::NoDestructor<GURL> test_override;
@@ -196,17 +164,6 @@ author: bearinmindcat <bearincrypto@gmail.com>
  #include "components/translate/core/browser/translate_ranker_impl.h"
  
  #include <cmath>
---- a/content/browser/attribution_reporting/attribution_suitable_context.cc
-+++ b/content/browser/attribution_reporting/attribution_suitable_context.cc
-@@ -34,7 +34,7 @@
- 
- using attribution_reporting::SuitableOrigin;
- 
--bool UkmSourceIdAllowed(RenderFrameHostImpl* rfh) {
-+[[maybe_unused]] bool UkmSourceIdAllowed(RenderFrameHostImpl* rfh) {
-   return rfh->GetLifecycleState() !=
-          RenderFrameHost::LifecycleState::kPrerendering;
- }
 --- a/content/browser/file_system_access/file_system_access_safe_move_helper.h
 +++ b/content/browser/file_system_access/file_system_access_safe_move_helper.h
 @@ -93,7 +93,7 @@

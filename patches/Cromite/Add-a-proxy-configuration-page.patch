@@ -80,18 +80,6 @@ diff --git a/chrome/browser/browser_resources.grd b/chrome/browser/browser_resou
        <if expr="not is_android or enable_extensions_core">
          <!-- Page not available for guest. -->
          <include name="IDR_PAGE_NOT_AVAILABLE_FOR_GUEST_APP_HTML" file="resources\page_not_available_for_guest\app.html" type="BINDATA" />
-diff --git a/chrome/browser/extensions/api/proxy/proxy_api_helpers.cc b/chrome/browser/extensions/api/proxy/proxy_api_helpers.cc
---- a/chrome/browser/extensions/api/proxy/proxy_api_helpers.cc
-+++ b/chrome/browser/extensions/api/proxy/proxy_api_helpers.cc
-@@ -383,7 +383,7 @@
-         return std::nullopt;
-       }
-       return ProxyConfigDictionary::CreateFixedServers(proxy_rules_string,
--                                                       bypass_list);
-+                                                       bypass_list, /*reverse_bypass*/false);
-     }
-     case ProxyPrefs::MODE_SYSTEM:
-       return ProxyConfigDictionary::CreateSystem();
 diff --git a/chrome/browser/net/proxy_service_factory.cc b/chrome/browser/net/proxy_service_factory.cc
 --- a/chrome/browser/net/proxy_service_factory.cc
 +++ b/chrome/browser/net/proxy_service_factory.cc
@@ -113,11 +101,13 @@ diff --git a/chrome/browser/net/proxy_service_factory.cc b/chrome/browser/net/pr
  
  #if BUILDFLAG(IS_CHROMEOS)
  #include "chromeos/ash/components/network/proxy/proxy_config_service_impl.h"
-@@ -57,7 +61,20 @@
+@@ -58,9 +62,20 @@
    return std::make_unique<ash::ProxyConfigServiceImpl>(
        profile_prefs, local_state_prefs, nullptr);
  #else
--  return std::make_unique<PrefProxyConfigTrackerImpl>(profile_prefs, nullptr);
+-  return std::make_unique<PrefProxyConfigTrackerImpl>(
+-      profile_prefs, /*proxy_config_service_task_runner=*/nullptr,
+-      policy_service);
 +  // Migrate from profile_prefs to local_state_prefs
 +  if (local_state_prefs->GetBoolean("proxy_migrated") == false) {
 +    const base::DictValue& dict =

@@ -9,7 +9,7 @@ Subject: Remove dependency on com.google.android.gms.flags,
 
 --- a/third_party/android_deps/autorolled/BUILD.gn
 +++ b/third_party/android_deps/autorolled/BUILD.gn
-@@ -1254,27 +1254,6 @@ template("define_autorolled_targets") {
+@@ -813,27 +813,6 @@ template("define_autorolled_targets") {
        }
      }
  
@@ -37,7 +37,7 @@ Subject: Remove dependency on com.google.android.gms.flags,
      # This is generated, do not edit. Update BuildConfigGenerator.groovy
      # instead.
      if (google_play_services_package == "//third_party/android_deps") {
-@@ -1298,27 +1277,6 @@ template("define_autorolled_targets") {
+@@ -857,27 +836,6 @@ template("define_autorolled_targets") {
        }
      }
  

@@ -312,7 +312,7 @@ diff --git a/chrome/browser/webid/android/java/src/org/chromium/chrome/browser/w
 -                                            "Response doesn't contain responseJson"));
 -                            return;
 -                        }
--                        Log.d(TAG, "Response JSON: " + responseJson);
+-                        Log.d(TAG, "Response JSON: %s", responseJson);
 -
 -                        DigitalCredential digitalCredential = parseResponse(responseJson);
 -                        if (digitalCredential == null) {
@@ -700,7 +700,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
  import org.chromium.components.webauthn.cred_man.CredManHelper;
  import org.chromium.components.webauthn.cred_man.CredManSupportProvider;
  import org.chromium.content_public.browser.ClientDataJson;
-@@ -152,12 +149,7 @@
+@@ -156,12 +153,7 @@
       */
      public Fido2CredentialRequest(AuthenticationContextProvider authenticationContextProvider) {
          mAuthenticationContextProvider = authenticationContextProvider;
@@ -714,7 +714,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
          mPlayServicesAvailable = playServicesAvailable;
          mCredManHelper =
                  new CredManHelper(mAuthenticationContextProvider, this, mPlayServicesAvailable);
-@@ -352,29 +344,6 @@
+@@ -359,29 +351,6 @@
                              /* credentialRequestResult= */ null);
                      return;
                  }
@@ -744,7 +744,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
                  return;
              }
              int result =
-@@ -431,27 +400,6 @@
+@@ -438,27 +407,6 @@
                      /* credentialRequestResult= */ null);
              return;
          }
@@ -772,7 +772,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
      }
  
      @SuppressWarnings("NewApi")
-@@ -927,32 +875,6 @@
+@@ -936,32 +884,6 @@
              callback.onIsUserVerifyingPlatformAuthenticatorAvailableResponse(false);
              return;
          }
@@ -805,7 +805,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
      }
  
      public void handleReportRequest(PublicKeyCredentialReportOptions options, Origin origin) {
-@@ -1296,16 +1218,6 @@
+@@ -1305,16 +1227,6 @@
          if (options.mediation == Mediation.CONDITIONAL) {
              mCancellableUiState = CancellableUiState.REQUEST_SENT_TO_PLATFORM;
          }
@@ -822,7 +822,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
      }
  
      private void handleNonCredentialReturn(GetCredentialOptions options, Integer reason) {
-@@ -1350,29 +1262,6 @@
+@@ -1357,29 +1269,6 @@
          assert mCancellableUiState == CancellableUiState.NONE
                  || mCancellableUiState == CancellableUiState.REQUEST_SENT_TO_PLATFORM
                  || mCancellableUiState == CancellableUiState.WAITING_FOR_SELECTION;
@@ -855,15 +855,15 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
 diff --git a/components/webauthn/android/java/src/org/chromium/components/webauthn/GmsCoreGetCredentialsHelper.java b/components/webauthn/android/java/src/org/chromium/components/webauthn/GmsCoreGetCredentialsHelper.java
 --- a/components/webauthn/android/java/src/org/chromium/components/webauthn/GmsCoreGetCredentialsHelper.java
 +++ b/components/webauthn/android/java/src/org/chromium/components/webauthn/GmsCoreGetCredentialsHelper.java
-@@ -8,7 +8,6 @@
+@@ -10,7 +10,6 @@
  
- import android.os.SystemClock;
+ import androidx.annotation.IntDef;
  
 -import com.google.android.gms.tasks.OnFailureListener;
  
  import org.chromium.base.ResettersForTesting;
  import org.chromium.base.metrics.RecordHistogram;
-@@ -80,6 +79,9 @@
+@@ -92,6 +91,9 @@
      public interface GetCredentialsCallback {
          void onCredentialsReceived(List<WebauthnCredentialDetails> credentials);
      }
@@ -874,9 +874,9 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
      public static GmsCoreGetCredentialsHelper getInstance() {
          if (sInstance == null) {
 @@ -106,72 +108,7 @@
-             String relyingPartyId, Reason reason, GetCredentialsCallback successCallback,
+             GetCredentialsCallback successCallback,
              OnFailureListener failureCallback) {
-         log(TAG, "getCredentials with reason: " + reason);
+         log(TAG, "getCredentials with reason: %s", getReasonName(reason));
 -        final long startTimeMs = SystemClock.elapsedRealtime();
 -        if (reason == Reason.GET_ASSERTION_NON_GOOGLE && GmsCoreUtils.isPasskeyCacheSupported()) {
 -            Fido2ApiCallHelper.getInstance()
@@ -920,7 +920,7 @@ diff --git a/components/webauthn/android/java/src/org/chromium/components/webaut
 -    private void getCredentialsFromFido2Api(
 -            AuthenticationContextProvider authenticationContextProvider,
 -            String relyingPartyId,
--            Reason reason,
+-            @Reason int reason,
 -            GetCredentialsCallback successCallback,
 -            OnFailureListener failureCallback,
 -            @GmsCoreGetCredentialsResult int successMetric,

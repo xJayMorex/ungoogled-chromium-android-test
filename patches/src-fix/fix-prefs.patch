@@ -11,7 +11,7 @@ diff --git a/chrome/browser/preferences/BUILD.gn b/chrome/browser/preferences/BU
 index 2eb743c..75c4171 100644
 --- a/chrome/browser/preferences/BUILD.gn
 +++ b/chrome/browser/preferences/BUILD.gn
-@@ -75,7 +75,6 @@ java_cpp_strings("java_pref_names_srcjar") {
+@@ -77,7 +77,6 @@ java_cpp_strings("java_pref_names_srcjar") {
      "//components/safe_browsing/core/common/safe_browsing_prefs.h",
      "//components/safety_check/safety_check_pref_names.h",
      "//components/saved_tab_groups/public/pref_names.h",
@@ -23,7 +23,7 @@ diff --git a/chrome/browser/ui/android/signin/java/src/org/chromium/chrome/brows
 index 4d9f12b..89e5b0c 100644
 --- a/chrome/browser/ui/android/signin/java/src/org/chromium/chrome/browser/ui/signin/FullscreenSigninPromoLauncher.java
 +++ b/chrome/browser/ui/android/signin/java/src/org/chromium/chrome/browser/ui/signin/FullscreenSigninPromoLauncher.java
-@@ -173,8 +173,7 @@ public final class FullscreenSigninPromoLauncher {
+@@ -181,8 +181,7 @@ public final class FullscreenSigninPromoLauncher {
              return false;
          }
  

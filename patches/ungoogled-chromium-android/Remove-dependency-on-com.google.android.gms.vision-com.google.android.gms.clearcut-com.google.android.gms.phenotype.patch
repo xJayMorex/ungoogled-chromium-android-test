@@ -17,7 +17,7 @@ Subject: Remove dependency on com.google.android.gms.vision,
 
 --- a/chrome/android/BUILD.gn
 +++ b/chrome/android/BUILD.gn
-@@ -323,7 +323,5 @@ if (_is_default_toolchain) {
+@@ -314,7 +314,5 @@ if (_is_default_toolchain) {
        "$google_play_services_package:google_play_services_basement_java",
        "$google_play_services_package:google_play_services_tasks_java",
 -      "$google_play_services_package:google_play_services_vision_common_java",
@@ -36,7 +36,7 @@ Subject: Remove dependency on com.google.android.gms.vision,
        "//base:base_java",
        "//base:base_java_test_support",
        "//base:base_junit_test_support",
-@@ -251,8 +249,6 @@ if (is_android) {
+@@ -250,8 +248,6 @@ if (is_android) {
      deps = [
        "$google_play_services_package:google_play_services_base_java",
        "$google_play_services_package:google_play_services_basement_java",
@@ -471,7 +471,7 @@ Subject: Remove dependency on com.google.android.gms.vision,
  }
 --- a/third_party/android_deps/autorolled/BUILD.gn
 +++ b/third_party/android_deps/autorolled/BUILD.gn
-@@ -304,38 +304,6 @@ template("define_autorolled_targets") {
+@@ -159,38 +159,6 @@ template("define_autorolled_targets") {
        }
      }
  
@@ -510,8 +510,8 @@ Subject: Remove dependency on com.google.android.gms.vision,
      # This is generated, do not edit. Update BuildConfigGenerator.groovy
      # instead.
      if (!defined(material_design_target)) {
-@@ -1067,30 +1035,6 @@ template("define_autorolled_targets") {
-       ]
+@@ -823,30 +791,6 @@ template("define_autorolled_targets") {
+       }
      }
  
 -    # This is generated, do not edit. Update BuildConfigGenerator.groovy

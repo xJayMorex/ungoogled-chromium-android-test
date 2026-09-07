@@ -8,7 +8,7 @@ date: Tue, 22 Jul 2026
 diff --git a/chrome/browser/media/router/media_router_feature.cc b/chrome/browser/media/router/media_router_feature.cc
 --- a/chrome/browser/media/router/media_router_feature.cc
 +++ b/chrome/browser/media/router/media_router_feature.cc
-@@ -128,7 +128,7 @@
+@@ -133,7 +133,7 @@
      pref_values.insert(std::make_pair(context, allowed));
      return allowed;
    }
@@ -20,7 +20,7 @@ diff --git a/chrome/browser/media/router/media_router_feature.cc b/chrome/browse
 diff --git a/chrome/browser/profiles/profile_impl.cc b/chrome/browser/profiles/profile_impl.cc
 --- a/chrome/browser/profiles/profile_impl.cc
 +++ b/chrome/browser/profiles/profile_impl.cc
-@@ -441,7 +441,7 @@
+@@ -443,7 +443,7 @@
  #endif
  
    registry->RegisterBooleanPref(prefs::kForceEphemeralProfiles, false);

@@ -29,9 +29,9 @@ diff --git a/content/browser/loader/browser_initiated_resource_request.cc b/cont
  #include "content/public/common/content_client.h"
  #include "net/http/http_request_headers.h"
 +#include "services/network/public/cpp/features.h"
+ #include "third_party/blink/public/common/global_privacy_control/global_privacy_control_util.h"
  #include "third_party/blink/public/common/loader/loader_constants.h"
  #include "third_party/blink/public/common/renderer_preferences/renderer_preferences.h"
- 
 @@ -38,7 +40,8 @@
    // remove it for the time being. If you're reading this, consider building
    // permissions policies for workers and/or deprecating this inclusion.

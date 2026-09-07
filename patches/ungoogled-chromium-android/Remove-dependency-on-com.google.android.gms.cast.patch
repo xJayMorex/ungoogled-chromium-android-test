@@ -29,7 +29,7 @@ Subject: Remove dependency on com.google.android.gms.cast
 
 --- a/chrome/android/BUILD.gn
 +++ b/chrome/android/BUILD.gn
-@@ -322,8 +322,6 @@ if (_is_default_toolchain) {
+@@ -312,8 +312,6 @@ if (_is_default_toolchain) {
        ":xr_java",
        "$google_play_services_package:google_play_services_base_java",
        "$google_play_services_package:google_play_services_basement_java",
@@ -40,7 +40,7 @@ Subject: Remove dependency on com.google.android.gms.cast
        "$google_play_services_package:google_play_services_vision_common_java",
 --- a/chrome/android/javatests/BUILD.gn
 +++ b/chrome/android/javatests/BUILD.gn
-@@ -52,8 +52,6 @@ android_library("chrome_test_java_helper") {
+@@ -53,8 +53,6 @@ android_library("chrome_test_java_helper") {
    public_deps = [
      "$google_play_services_package:google_play_services_base_java",
      "$google_play_services_package:google_play_services_basement_java",
@@ -483,7 +483,7 @@ Subject: Remove dependency on com.google.android.gms.cast
      }
  
      /** Called when session started. */
-@@ -174,35 +105,6 @@ public abstract class BaseSessionController {
+@@ -174,33 +105,6 @@ public abstract class BaseSessionController {
          return mProvider;
      }
  
@@ -494,11 +494,9 @@ Subject: Remove dependency on com.google.android.gms.cast
 -    protected void onMessageReceived(CastDevice castDevice, String namespace, String message) {
 -        Log.d(
 -                TAG,
--                "Received message from Cast device: namespace=\""
--                        + namespace
--                        + "\" message=\""
--                        + message
--                        + "\"");
+-                "Received message from Cast device: namespace=\"%s\" message=\"%s\"",
+-                namespace,
+-                message);
 -        if (CastSessionUtil.MEDIA_NAMESPACE.equals(namespace)) {
 -            updateRemoteMediaClient(message);
 -        }
@@ -519,7 +517,7 @@ Subject: Remove dependency on com.google.android.gms.cast
      protected void onStatusUpdated() {
          notifyCallback((Callback callback) -> callback.onStatusUpdated());
      }
-@@ -220,7 +122,7 @@ public abstract class BaseSessionController {
+@@ -218,7 +122,7 @@ public abstract class BaseSessionController {
       * {@link CastSession#getSessionId()} is final.
       */
      public @Nullable String getSessionId() {
@@ -619,7 +617,7 @@ Subject: Remove dependency on com.google.android.gms.cast
 -
 -    @Override
 -    public final void onSessionEnded(CastSession session, int error) {
--        Log.d(TAG, "Session ended with error code " + error);
+-        Log.d(TAG, "Session ended with error code %d", error);
 -        handleSessionEnd();
 -    }
 -
@@ -685,12 +683,13 @@ Subject: Remove dependency on com.google.android.gms.cast
  import org.chromium.base.Log;
  import org.chromium.build.annotations.NullMarked;
  import org.chromium.build.annotations.Nullable;
-@@ -146,25 +144,6 @@ public class CafMediaRouteProvider extends CafBaseMediaRouteProvider {
+@@ -146,26 +144,6 @@ public class CafMediaRouteProvider extends CafBaseMediaRouteProvider {
          return mMessageHandler;
      }
  
 -    @Override
 -    protected void handleSessionStart(CastSession session, String sessionId) {
+-        mLastRemovedRouteRecord = null;
 -        super.handleSessionStart(session, sessionId);
 -
 -        for (ClientRecord clientRecord : mClientIdToRecords.values()) {
@@ -1514,19 +1513,20 @@ Subject: Remove dependency on com.google.android.gms.cast
      # This is generated, do not edit. Update BuildConfigGenerator.groovy
      # instead.
      if (google_play_services_package == "//third_party/android_deps") {
-@@ -499,11 +451,6 @@ template("define_autorolled_targets") {
+@@ -531,12 +484,6 @@ template("define_autorolled_targets") {
        info_path = "autorolled/committed/libs/com_google_mlkit_common/com_google_mlkit_common.info"
        enable_bytecode_checks = false
        deps = [
 -        "$google_play_services_package:google_android_datatransport_transport_api_java",
 -        "$google_play_services_package:google_android_datatransport_transport_backend_cct_java",
 -        "$google_play_services_package:google_android_datatransport_transport_runtime_java",
+-        "$google_play_services_package:google_firebase_firebase_components_java",
 -        "$google_play_services_package:google_firebase_firebase_encoders_java",
 -        "$google_play_services_package:google_firebase_firebase_encoders_json_java",
          "$google_play_services_package:google_play_services_base_java",
          "$google_play_services_package:google_play_services_basement_java",
          "$google_play_services_package:google_play_services_tasks_java",
-@@ -535,11 +482,6 @@ template("define_autorolled_targets") {
+@@ -568,11 +515,6 @@ template("define_autorolled_targets") {
        info_path = "autorolled/committed/libs/com_google_mlkit_genai_prompt/com_google_mlkit_genai_prompt.info"
        enable_bytecode_checks = false
        deps = [
@@ -1538,8 +1538,8 @@ Subject: Remove dependency on com.google.android.gms.cast
          "$google_play_services_package:google_play_services_basement_java",
          "$google_play_services_package:google_play_services_tasks_java",
          "//third_party/android_deps:com_google_mlkit_common_java",
-@@ -1004,74 +946,6 @@ template("define_autorolled_targets") {
-       ]
+@@ -948,74 +890,6 @@ template("define_autorolled_targets") {
+       testonly = true
      }
  
 -    # This is generated, do not edit. Update BuildConfigGenerator.groovy
@@ -1613,8 +1613,8 @@ Subject: Remove dependency on com.google.android.gms.cast
      # This is generated, do not edit. Update BuildConfigGenerator.groovy
      # instead.
      if (google_play_services_package == "//third_party/android_deps") {
-@@ -1194,70 +1068,6 @@ template("define_autorolled_targets") {
-       testonly = true
+@@ -1299,70 +1173,6 @@ template("define_autorolled_targets") {
+       }
      }
  
 -    # This is generated, do not edit. Update BuildConfigGenerator.groovy
@@ -1683,10 +1683,10 @@ Subject: Remove dependency on com.google.android.gms.cast
 -
      # This is generated, do not edit. Update BuildConfigGenerator.groovy
      # instead.
-     java_prebuilt("com_google_guava_failureaccess_java") {
+     if (google_play_services_package == "//third_party/android_deps") {
 --- a/chrome/android/java/AndroidManifest.xml
 +++ b/chrome/android/java/AndroidManifest.xml
-@@ -856,16 +856,6 @@
+@@ -854,16 +854,6 @@
              </intent-filter>
          </activity>
  
@@ -1700,10 +1700,10 @@ Subject: Remove dependency on com.google.android.gms.cast
 -            android:excludeFromRecents="true">
 -        </activity>
 -
-         <!-- This activity is used to restart the main Chrome process.  Should never be exported. -->
-         <activity android:name="org.chromium.chrome.browser.BrowserRestartActivity"
-             android:launchMode="singleInstance"
-@@ -1399,12 +1389,6 @@
+         <activity android:name="org.chromium.chrome.browser.share.send_tab_to_self.SendTabToSelfShareTargetActivity"
+             android:theme="@style/Theme.BrowserUI.Translucent.NoTitleBar"
+             android:exported="false"
+@@ -1409,12 +1399,6 @@
        <uses-native-library android:name="libopenxr.google.so" android:required="false" />
        {% endif %}
  

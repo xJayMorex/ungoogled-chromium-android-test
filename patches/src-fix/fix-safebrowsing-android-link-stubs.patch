@@ -44,7 +44,7 @@ diff --git a/chrome/browser/component_updater/registration.cc b/chrome/browser/c
 index f891c619c6cdc..2487c932ae84d 100644
 --- a/chrome/browser/component_updater/registration.cc
 +++ b/chrome/browser/component_updater/registration.cc
-@@ -196,7 +196,6 @@
+@@ -197,7 +197,6 @@
  #endif  // !BUILDFLAG(IS_ANDROID)
  
  #if BUILDFLAG(IS_ANDROID)

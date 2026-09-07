@@ -105,9 +105,9 @@ diff --git a/chrome/android/java/src/org/chromium/chrome/browser/compositor/over
 --- a/chrome/android/java/src/org/chromium/chrome/browser/compositor/overlays/strip/StripLayoutHelper.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/compositor/overlays/strip/StripLayoutHelper.java
 @@ -138,6 +138,7 @@
+ import org.chromium.ui.base.ActivityResultTracker;
  import org.chromium.ui.base.LocalizationUtils;
  import org.chromium.ui.base.WindowAndroid;
- import org.chromium.ui.util.ColorUtils;
 +import org.chromium.ui.base.DeviceFormFactor;
  import org.chromium.ui.util.MotionEventUtils;
  import org.chromium.ui.util.StyleUtils;
@@ -118,11 +118,11 @@ diff --git a/chrome/android/java/src/org/chromium/chrome/browser/compositor/over
 @@ -118,6 +118,7 @@
  import org.chromium.content_public.browser.LoadUrlParams;
  import org.chromium.ui.base.ActivityResultTracker;
- import org.chromium.ui.base.LocalizationUtils;
+ import org.chromium.ui.base.ActivityWindowAndroid;
 +import org.chromium.ui.base.DeviceFormFactor;
  import org.chromium.ui.base.PageTransition;
- import org.chromium.ui.base.WindowAndroid;
  import org.chromium.ui.display.DisplayUtil;
+ import org.chromium.ui.dragdrop.DragAndDropDelegate;
 @@ -577,7 +578,10 @@
          mIsHeaderCustomizationSupported =
                  ToolbarFeatures.isAppHeaderCustomizationSupported(

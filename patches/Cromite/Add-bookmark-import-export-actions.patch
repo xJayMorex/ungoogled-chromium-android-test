@@ -1157,33 +1157,33 @@ diff --git a/chrome/browser/flags/android/chrome_feature_list.cc b/chrome/browse
 --- a/chrome/browser/flags/android/chrome_feature_list.cc
 +++ b/chrome/browser/flags/android/chrome_feature_list.cc
 @@ -275,6 +275,7 @@
-     &kBookmarkPaneAndroid,
      &kBookmarksBarNTP,
+     &kBookmarksDesktopLayout,
      &kBottomSheetAsBrowserControls,
 +    &kBookmarksExportUseSaf,
+     &kBottomSheetOnDesktopWindowing,
      &kBrowserControlsDebugging,
      &kBrowserControlsEarlyResize,
-     &kBrowserControlsPersistsOnCvh,
 @@ -638,6 +639,8 @@
- BASE_FEATURE(kBlockIntentsWhileLocked, base::FEATURE_DISABLED_BY_DEFAULT);
  BASE_FEATURE(kBookmarkPaneAndroid, base::FEATURE_DISABLED_BY_DEFAULT);
+ BASE_FEATURE(kBookmarksBarContextMenu, base::FEATURE_ENABLED_BY_DEFAULT);
  BASE_FEATURE(kBookmarksBarNTP, base::FEATURE_DISABLED_BY_DEFAULT);
 +// disabled by default because of an issue on Android 6.0
 +BASE_FEATURE(kBookmarksExportUseSaf, base::FEATURE_DISABLED_BY_DEFAULT);
+ BASE_FEATURE(kBookmarksDesktopLayout, base::FEATURE_ENABLED_BY_DEFAULT);
  BASE_FEATURE(kBottomSheetAsBrowserControls, base::FEATURE_ENABLED_BY_DEFAULT);
- BASE_FEATURE(kBrowserControlsDebugging, base::FEATURE_DISABLED_BY_DEFAULT);
- BASE_FEATURE(kBrowserControlsEarlyResize, base::FEATURE_DISABLED_BY_DEFAULT);
+ BASE_FEATURE(kBottomSheetOnDesktopWindowing, base::FEATURE_DISABLED_BY_DEFAULT);
 diff --git a/chrome/browser/flags/android/chrome_feature_list.h b/chrome/browser/flags/android/chrome_feature_list.h
 --- a/chrome/browser/flags/android/chrome_feature_list.h
 +++ b/chrome/browser/flags/android/chrome_feature_list.h
 @@ -91,6 +91,7 @@
- BASE_DECLARE_FEATURE(kBlockIntentsWhileLocked);
  BASE_DECLARE_FEATURE(kBookmarkPaneAndroid);
+ BASE_DECLARE_FEATURE(kBookmarksBarContextMenu);
  BASE_DECLARE_FEATURE(kBookmarksBarNTP);
 +BASE_DECLARE_FEATURE(kBookmarksExportUseSaf);
+ BASE_DECLARE_FEATURE(kBookmarksDesktopLayout);
  BASE_DECLARE_FEATURE(kBottomSheetAsBrowserControls);
- BASE_DECLARE_FEATURE(kBrowserControlsDebugging);
- BASE_DECLARE_FEATURE(kBrowserControlsEarlyResize);
+ BASE_DECLARE_FEATURE(kBottomSheetOnDesktopWindowing);
 diff --git a/chrome/browser/importer/profile_writer.cc b/chrome/browser/importer/profile_writer.cc
 --- a/chrome/browser/importer/profile_writer.cc
 +++ b/chrome/browser/importer/profile_writer.cc
@@ -1516,9 +1516,9 @@ diff --git a/chrome/browser/flags/android/java/src/org/chromium/chrome/browser/f
 --- a/chrome/browser/flags/android/java/src/org/chromium/chrome/browser/flags/ChromeFeatureList.java
 +++ b/chrome/browser/flags/android/java/src/org/chromium/chrome/browser/flags/ChromeFeatureList.java
 @@ -725,6 +725,7 @@
+     public static final String VERIFY_STARTUP_SIGNIN_STATE = "VerifyStartupSigninState";
      public static final String VIRTUAL_KEYBOARD_TRANSIENT_INNER_HEIGHT_FIX =
              "VirtualKeyboardTransientInnerHeightFix";
-     public static final String VISITED_URL_RANKING_SERVICE = "VisitedURLRankingService";
 +    public static final String BOOKMARKS_EXPORT_USESAF = "BookmarksExportUseSaf";
      public static final String WEB_APK_BACKUP_AND_RESTORE_BACKEND = "WebApkBackupAndRestoreBackend";
      public static final String WEB_APK_INSTALL_FAILURE_NOTIFICATION =
